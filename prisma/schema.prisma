@@ -16,4 +16,5 @@ model Inquiry {
   email String
   subject String
   message String
+  productName String @default("")
 }

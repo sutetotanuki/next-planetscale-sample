@@ -12,12 +12,14 @@ const Home: NextPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
+  const [productName, setProductName] = useState("");
   const [message, setMessage] = useState("");
 
   const clearForm = () => {
     setName("");
     setEmail("");
     setSubject("");
+    setProductName("");
     setMessage("");
   }
 
@@ -27,7 +29,7 @@ const Home: NextPage = () => {
     e.preventDefault();
 
     const response = await fetch("/api/inquiries", {method: "POST", body: JSON.stringify({
-      name, email, subject, message
+      name, email, subject, productName, message
     }),
     headers: {
       "Content-Type": "application/json"
@@ -63,6 +65,12 @@ const Home: NextPage = () => {
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-1">
+            ProductName
+          </label>
+          <input onChange={(e) => setProductName(e.target.value)} type="text" value={productName} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-1">
             Message
           </label>
           <textarea onChange={(e) => setMessage(e.target.value)} value={message} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" />
@@ -77,6 +85,7 @@ const Home: NextPage = () => {
             <th className="py-3 px-6">Name</th>
             <th className="py-3 px-6">Email</th>
             <th className="py-3 px-6">Subject</th>
+            <th className="py-3 px-6">ProductName</th>
             <th className="py-3 px-6">Message</th>
           </tr>
         </thead>
@@ -87,6 +96,7 @@ const Home: NextPage = () => {
                 <td className="py-4 px-6">{inquiry.name}</td>
                 <td className="py-4 px-6">{inquiry.email}</td>
                 <td className="py-4 px-6">{inquiry.subject}</td>
+                <td className="py-4 px-6">{inquiry.productName}</td>
                 <td className="py-4 px-6">{inquiry.message}</td>
               </tr>
             )

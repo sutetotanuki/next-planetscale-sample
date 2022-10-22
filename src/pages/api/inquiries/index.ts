@@ -9,6 +9,7 @@ const postInquiry = async (req: NextApiRequest, res: NextApiResponse) => {
         name: body.name,
         email: body.email,
         subject: body.subject,
+        productName: body.productName,
         message: body.message,
     })
 

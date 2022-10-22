@@ -6,6 +6,7 @@ export type InquiryInput = {
     name: string,
     email: string,
     subject: string,
+    productName: string,
     message: string,
 }
 
